@@ -2,9 +2,11 @@
   "name": "parallel-full-twitter-server",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "index.mjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "NODE_ENV=production forever start -w ./test-server.mjs ./test-server.mjs",
+    "stop": "forever stop ./test-server.mjs",
+    "test": "NODE_ENV=development nodemon -e mjs,cjs,js start ./ test-server.mjs"
   },
   "repository": {
     "type": "git",
@@ -17,7 +19,13 @@
   },
   "homepage": "https://github.com/YokoyamaLab/parallel-full-twitter-server#readme",
   "dependencies": {
+    "async": "^3.2.2",
+    "cli-progress": "^3.9.1",
+    "colors": "^1.4.0",
     "express": "^4.17.1",
+    "loglevel": "^1.7.1",
+    "luxon": "^2.1.1",
+    "piscina": "^3.1.0",
     "socket.io": "^4.3.2"
   }
 }
